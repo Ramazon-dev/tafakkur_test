@@ -56,45 +56,8 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
           routerConfig: appRouter.config(),
-          builder: (context, child) {
-            return FlavorBanner(
-              name: 'name',
-              show: true,
-              child: child,
-            );
-          },
         ),
       ),
     );
-  }
-}
-
-class FlavorBanner extends StatelessWidget {
-  final String name;
-  final bool show;
-  final Widget? child;
-
-  const FlavorBanner({
-    super.key,
-    required this.name,
-    required this.show,
-    this.child,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return show
-        ? Banner(
-            location: BannerLocation.topStart,
-            message: name,
-            color: Colors.green.withOpacity(0.6),
-            textStyle: const TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 12.0,
-              letterSpacing: 1.0,
-            ),
-            child: child,
-          )
-        : child!;
   }
 }

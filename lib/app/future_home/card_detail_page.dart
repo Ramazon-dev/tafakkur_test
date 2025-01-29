@@ -112,15 +112,6 @@ class _CardDetailPageState extends State<CardDetailPage> {
         gradient: card.gradient,
         asset: card.asset,
       );
-      // nameController.text = card.name;
-      // nameNotifier.value = card.name;
-      // cardNumberController.text = card.number;
-      // dateController.text = card.dateTime;
-      // galleryImageNotifier.value = card.file;
-      // imageNotifier.value = card.asset;
-      // gradientNotifier.value = card.gradient;
-      // colorNotifier.value = card.color;
-      // blurFilterNotifier.value = card.blur;
     }
     if (cubit.state.color == null &&
         cubit.state.asset == null &&
@@ -142,10 +133,6 @@ class _CardDetailPageState extends State<CardDetailPage> {
           IconButton(
             onPressed: () async {
               await _pickImage(ImageSource.gallery);
-              // final some = Colors.cyanAccent.toHex();
-              // print('object hex ${some.replaceAll('#', '')}');
-              // final color = HexColor.fromHex(some);
-              // print('object color $color');
             },
             icon: const Icon(Icons.image),
           ),
@@ -153,7 +140,6 @@ class _CardDetailPageState extends State<CardDetailPage> {
       ),
       body: BlocBuilder<CardCubit, CardModel>(
         builder: (context, state) {
-          print('object card cubit changed ${state.name}');
           return SingleChildScrollView(
             child: Form(
               key: formKey,
@@ -182,10 +168,6 @@ class _CardDetailPageState extends State<CardDetailPage> {
                         borderRadius: BorderRadius.circular(16),
                         onTap: () {
                           cubit.changeAsset(images[index]);
-                          // imageNotifier.value = images[index];
-                          // galleryImageNotifier.value = null;
-                          // colorNotifier.value = null;
-                          // gradientNotifier.value = null;
                         },
                         child: Container(
                           height: 80.h,
@@ -221,10 +203,6 @@ class _CardDetailPageState extends State<CardDetailPage> {
                               borderRadius: BorderRadius.circular(16.r),
                               onTap: () {
                                 cubit.changeGradient(gradients[index]);
-                                // gradientNotifier.value = gradients[index];
-                                // galleryImageNotifier.value = null;
-                                // colorNotifier.value = null;
-                                // imageNotifier.value = null;
                               },
                               child: Container(
                                 height: 40.h,
@@ -248,10 +226,6 @@ class _CardDetailPageState extends State<CardDetailPage> {
                               borderRadius: BorderRadius.circular(16.r),
                               onTap: () {
                                 cubit.changeColor(colors[index]);
-                                // colorNotifier.value = colors[index];
-                                // galleryImageNotifier.value = null;
-                                // imageNotifier.value = null;
-                                // gradientNotifier.value = null;
                               },
                               child: CircleAvatar(
                                 backgroundColor: colors[index],
@@ -285,7 +259,6 @@ class _CardDetailPageState extends State<CardDetailPage> {
                           textCapitalization: TextCapitalization.sentences,
                           onChanged: (value) {
                             context.read<CardCubit>().changeName(value);
-                            // nameNotifier.value = value;
                           },
                           validator: (value) {
                             if (value.isNotNullOrEmpty) {
